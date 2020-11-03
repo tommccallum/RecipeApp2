@@ -47,11 +47,19 @@ export default function EditScreenInfo({ path }: { path: string }) {
 
   if (selectedImage !== null) {
     const image_filename = basename(selectedImage.localUri)
-    const dest = FileSystem.documentDirectory + "/" + image_filename
+    const dest = FileSystem.documentDirectory + image_filename
+    console.log("DocumentDirectory: "+FileSystem.documentDirectory)
     console.log("SOURCE: "+selectedImage.localUri)
     console.log("BASENAME: "+image_filename)
     console.log("DESTINATION: "+dest)
-    FileSystem.copyAsync({ from: selectedImage.localUri, to: dest})
+    FileSystem.getInfoAsync(dest)
+    .then((fileInfo) => {
+      if ( !fileInfo.exists ) {
+        console.log("Copying file to local area")
+        FileSystem.copyAsync({ from: selectedImage.localUri, to: dest})
+      }
+    });
+    
 
     return (
       <View style={styles.container}>

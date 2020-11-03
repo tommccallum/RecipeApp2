@@ -10,6 +10,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabThreeParamList } from '../types';
 import { Button, Text, Image } from 'react-native';
+import BurgerButton from '../components/BurgerButton'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -18,13 +19,14 @@ export default function BottomTabNavigator({navigation} : {navigation: any}) {
 
   const [count, setCount] = React.useState(0);
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <Button onPress={() => setCount(c => c + 1)} title="Update count" />
-      ),
-    });
-  }, [navigation, setCount]);
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => (
+  //       //<Button onPress={() => setCount(c => c + 1)} title="Update count" />
+  //       <BurgerButton></BurgerButton>
+  //     ),
+  //   });
+  // }, [navigation, setCount]);
 
   return (
     <BottomTab.Navigator

@@ -13,7 +13,11 @@ import SideBar from "../components/SideBar";
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import TabThreeScreen from '../screens/TabThreeScreen';
+import HeaderBar from '../components/HeaderBar'
 
+// A root stack navigator is often used for displaying modals on top of all other content
+// Read more here: https://reactnavigation.org/docs/modal
+const Stack = createStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator();
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -23,19 +27,11 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      {/* <Drawer.Navigator initialRouteName="Recipes">
-        <Drawer.Screen name="New Recipe" component={TabOneScreen} />
-        <Drawer.Screen name="Recipes" component={TabTwoScreen} />
-        <Drawer.Screen name="Shopping Lists" component={TabThreeScreen} />
-      </Drawer.Navigator> */}
       <RootNavigator />
     </NavigationContainer>
   );
 }
 
-// A root stack navigator is often used for displaying modals on top of all other content
-// Read more here: https://reactnavigation.org/docs/modal
-const Stack = createStackNavigator<RootStackParamList>();
 
 function LogoTitle() {
   return (
@@ -46,6 +42,15 @@ function LogoTitle() {
   );
 }
 
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator initialRouteName="Recipes">
+        <Drawer.Screen name="New Recipe" component={TabOneScreen} />
+        <Drawer.Screen name="Recipes" component={TabTwoScreen} />
+        <Drawer.Screen name="Shopping Lists" component={TabThreeScreen} />
+      </Drawer.Navigator>
+  )
+}
 function RootNavigator() {
   // headerShown: false shows the name of the page
   // headerShown: true  shows the header bar at top of the screen
@@ -54,7 +59,7 @@ function RootNavigator() {
         <Stack.Screen name="Root" 
           component={BottomTabNavigator} 
           options={({ navigation, route }) => ({
-            headerTitle: props => <LogoTitle/>,
+            headerTitle: props => <HeaderBar/>
           })}
         />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
