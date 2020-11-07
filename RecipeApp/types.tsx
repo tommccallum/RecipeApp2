@@ -1,7 +1,8 @@
-export type RootStackParamList = {
-  Root: undefined;
-  NotFound: undefined;
-};
+// export type RootStackParamList = {
+//   Root: undefined;
+//   NotFound: undefined;
+// };
+
 
 export type BottomTabParamList = {
   "New Recipe": undefined;

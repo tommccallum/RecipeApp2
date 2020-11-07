@@ -2,16 +2,16 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { ThemedText, ThemedView } from '../components/Themed';
 import * as IntentLauncher from 'expo-intent-launcher';
 
 export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <ThemedView style={styles.container}>
+      <ThemedText style={styles.title}>Tab Two</ThemedText>
+      <ThemedView style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabTwoScreen.js" />
-    </View>
+    </ThemedView>
   );
 }
 

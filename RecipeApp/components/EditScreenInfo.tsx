@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
-import { Text, View } from './Themed';
+import { ThemedText, ThemedView } from './Themed';
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import { basename } from 'path'
@@ -62,57 +62,57 @@ export default function EditScreenInfo({ path }: { path: string }) {
     
 
     return (
-      <View style={styles.container}>
+      <ThemedView style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
         <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
-          <Text style={styles.buttonText}>Share this photo</Text>
+          <ThemedText style={styles.buttonText}>Share this photo</ThemedText>
         </TouchableOpacity>
         
-      </View>
+      </ThemedView>
     );
   }
 
   return (
-    <View>
-      <View style={styles.getStartedContainer}>
-        <Text
+    <ThemedView>
+      <ThemedView style={styles.getStartedContainer}>
+        <ThemedText
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
           darkColor="rgba(255,255,255,0.8)">
           Open up the code for this screen:
-        </Text>
+        </ThemedText>
 
-        <View
+        <ThemedView
           style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           darkColor="rgba(255,255,255,0.05)"
           lightColor="rgba(0,0,0,0.05)">
           <MonoText>{path}</MonoText>
-        </View>
+        </ThemedView>
 
-        <Text
+        <ThemedText
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
           darkColor="rgba(255,255,255,0.8)">
           Change any of the text, save the file, and your app will automatically update.
-        </Text>
+        </ThemedText>
 
         <TouchableOpacity
         onPress={openImagePickerAsync}
         style={{ backgroundColor: 'blue' }}>
-        <Text style={{ fontSize: 20, color: '#fff' }}>Pick a photo</Text>
+        <ThemedText style={{ fontSize: 20, color: '#fff' }}>Pick a photo</ThemedText>
         </TouchableOpacity>
 
         
-      </View>
+      </ThemedView>
 
-      <View style={styles.helpContainer}>
+      <ThemedView style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+          <ThemedText style={styles.helpLinkText} lightColor={Colors.light.tint}>
             Tap here if your app doesn't automatically update after making changes
-          </Text>
+          </ThemedText>
         </TouchableOpacity>
-      </View>
-    </View>
+      </ThemedView>
+    </ThemedView>
   );
 }
 

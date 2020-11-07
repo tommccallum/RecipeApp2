@@ -14,7 +14,7 @@ import BurgerButton from '../components/BurgerButton'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator({navigation} : {navigation: any}) {
+export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   const [count, setCount] = React.useState(0);

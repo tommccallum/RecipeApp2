@@ -4,15 +4,13 @@ import { StyleSheet, View, SafeAreaView, SectionList } from 'react-native';
 import Constants from 'expo-constants';
 import { Button, Text, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer, DrawerActions } from '@react-navigation/native';
 
-function onHamburgerClick() {
-    console.log("click!")
-}
-
-export default function BurgerButton({drawer}:{drawer:JSX.Element}) {
+export default function BurgerButton({navigation}:{navigation:any}) {
     return (
         <View>
-        <TouchableOpacity onPress={onHamburgerClick}>
+        <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
             <Image 
             style = {styles.burger}
             source={require("../assets/images/burger.png")}

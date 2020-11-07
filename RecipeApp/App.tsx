@@ -4,7 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import TopLevelNavigation from './navigation';
 import * as FileSystem from 'expo-file-system';
 import * as SQLite from 'expo-sqlite';
 
@@ -24,13 +24,16 @@ export default function App() {
   //   console.log('Foreign keys turned on')
   // );
 
+
+  // the <StatusBar/> styles the very top bar of the phone with OS icons etc.
+  // SafeAreaProvider ensures the graphics stays within the phone bounds. (basically a view with padding appropriate for phone)
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+      <SafeAreaProvider>        
+        <TopLevelNavigation colorScheme={colorScheme} />
+        <StatusBar/>
       </SafeAreaProvider>
     );
   }

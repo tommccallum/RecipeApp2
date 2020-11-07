@@ -3,14 +3,14 @@ import { StyleSheet, View, SafeAreaView, SectionList } from 'react-native';
 import BurgerButton from '../components/BurgerButton'
 import SearchBox from './SearchBox'
 
-export default function HeaderBar() {
+export default function HeaderBar({navigation} : {navigation: any}) {
     return (
         <View style={styles.container}>
             <View style={styles.searcharea}>
                 <SearchBox></SearchBox>
             </View>
             <View>
-                <BurgerButton></BurgerButton>
+                <BurgerButton navigation={navigation}></BurgerButton>
             </View>
         </View>
     );
